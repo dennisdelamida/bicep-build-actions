@@ -10,8 +10,8 @@ jobs:
 
     strategy:
       matrix:
-        files: [ biceps/sample3.bicep biceps/sample4.bicep' ]
-        version: [ '', 'latest', 'v0.3.255', 'v0.2.x' ]
+        bicepFilePath: [ biceps/sample3.bicep biceps/sample4.bicep' ]
+        outputFilePath: [  biceps/sample3.json biceps/sample4.json' ]
 
     steps:
     - name: Checkout the repo
@@ -20,11 +20,6 @@ jobs:
     - name: Run the private action
       uses: Azure/bicep-build-action@main
       with:
-        files: ${{ matrix.files }}
-        version: ${{ matrix.version }}
+        bicepFilePath: ${{ matrix.outputFilePath }}
+        outputFilePath: ${{ matrix.outputFilePath }}
 
-    - name: Check the result
-      shell: bash
-      run: |
-        shopt -s globstar
-        ls -altR **/sample*.*
