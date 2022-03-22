@@ -20,6 +20,6 @@ jobs:
     - name: Run the private action
       uses: Azure/bicep-build-action@main
       with:
-        bicepFilePath: ${{ matrix.outputFilePath }}
-        outputFilePath: ${{ matrix.outputFilePath }}
+        bicepFilePath:'biceps/sample3.bicep'
+        outputFilePath:'biceps/sample3.json'
 
