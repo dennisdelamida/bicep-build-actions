@@ -1,0 +1,30 @@
+name: ARM Template Build and Test
+
+on: push
+
+jobs:
+  build_and_test:
+    name: Build and Test
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        files: [ '**/*.bicep', 'sample1.bicep sample2.bicep biceps/sample3.bicep biceps/sample4.bicep' ]
+        version: [ '', 'latest', 'v0.3.255', 'v0.2.x' ]
+
+    steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v2
+
+    - name: Run the private action
+      uses: ./
+      with:
+        files: ${{ matrix.files }}
+        version: ${{ matrix.version }}
+
+    - name: Check the result
+      shell: bash
+      run: |
+        shopt -s globstar
+        ls -altR **/sample*.*

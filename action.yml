@@ -1,0 +1,25 @@
+name: Bicep Build
+author: Aliencube Community
+description: Build ARM templates using the bicep CLI
+
+branding:
+  icon: copy
+  color: orange
+
+inputs:
+  files:
+    description: List of .bicep files to build, delimited by a space. eg) file1 file2 file3 ...
+    required: true
+  version:
+    description: Version of the bicep CLI. It can be the exact version (eg. `v0.3.255`), wildcard (eg. `v0.3.x`) or `latest`. If omitted, `latest` is set as default.
+    required: false
+    default: 'latest'
+
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+  - -Files
+  - ${{ inputs.files }}
+  - -Version
+  - ${{ inputs.version }}
