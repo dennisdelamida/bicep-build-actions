@@ -10,8 +10,8 @@ jobs:
 
     strategy:
       matrix:
-        bicepFilePath: [ biceps/sample3.bicep biceps/sample4.bicep' ]
-        outputFilePath: [  biceps/sample3.json biceps/sample4.json' ]
+        bicepFilePath: [ 'biceps/sample3.bicep biceps/sample4.bicep' ]
+        outputFilePath: [  'biceps/sample3.json biceps/sample4.json' ]
 
     steps:
     - name: Checkout the repo
