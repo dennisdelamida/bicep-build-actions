@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        files: [ '**/*.bicep', 'sample1.bicep sample2.bicep biceps/sample3.bicep biceps/sample4.bicep' ]
+        files: [ '**/*.bicep', 'sample1.bicep sample2.bicep biceps/sample3.bicep biceps/sample4.bicep sample/main.bicep' ]
         version: [ '', 'latest', 'v0.3.255', 'v0.2.x' ]
 
     steps:
