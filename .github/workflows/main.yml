@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        files: [ '**/*.bicep', 'sample1.bicep sample2.bicep biceps/sample3.bicep biceps/sample4.bicep' ]
+        files: [ biceps/sample3.bicep biceps/sample4.bicep' ]
         version: [ '', 'latest', 'v0.3.255', 'v0.2.x' ]
 
     steps:
@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run the private action
-      uses: ./
+      uses: Azure/bicep-build-action@main
       with:
         files: ${{ matrix.files }}
         version: ${{ matrix.version }}
